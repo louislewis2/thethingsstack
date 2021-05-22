@@ -98,7 +98,31 @@
             throw new IntegrationException(httpResponseMessage: httpResponseMessage, httpResponseMessage.ReasonPhrase);
         }
 
-        public async Task<T> DeleteAsync<T>(string resourceUrl) where T : class
+        public async Task<T> PutAsync<T>(string resourceUrl, object data) where T : class
+        {
+            if (string.IsNullOrWhiteSpace(resourceUrl))
+            {
+                throw new ArgumentException("Resource Url Cannot Be Emtpty");
+            }
+
+            if (data == null)
+            {
+                throw new ArgumentException("Data Cannot Be Null");
+            }
+
+            var content = new StringContent(SerializeToJson(data), Encoding.UTF8, "application/json");
+
+            var httpResponseMessage = await this.httpClient.PutAsync(resourceUrl, content);
+
+            if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                return httpResponseMessage.Deserialize<T>();
+            }
+
+            throw new IntegrationException(httpResponseMessage: httpResponseMessage, httpResponseMessage.ReasonPhrase);
+        }
+
+        public async Task<bool> DeleteAsync(string resourceUrl)
         {
             if (string.IsNullOrWhiteSpace(resourceUrl))
             {
@@ -109,7 +133,7 @@
 
             if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
             {
-                return httpResponseMessage.Deserialize<T>();
+                return true;
             }
 
             throw new IntegrationException(httpResponseMessage: httpResponseMessage, httpResponseMessage.ReasonPhrase);

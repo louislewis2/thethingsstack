@@ -11,7 +11,7 @@ It is currently under development, thus not all endpoints are implemented.
 
 > Install-Package TheThingsStack
 
-The latest version is 1.0.0-alpha-1
+The latest version is 1.0.0
 
 # Running Tests
 

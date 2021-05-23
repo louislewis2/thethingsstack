@@ -85,16 +85,56 @@
             this.TemplateId = templateId;
             this.TemplateFields = templateFields;
             this.DownlinkApiKey = downlinkApiKey;
-            this.UplinkMessage = new WebhookMessageCriteria(path: uplinkMessagePath);
-            this.JoinAccept = new WebhookMessageCriteria(path: joinAcceptPath);
-            this.DownlinkAck = new WebhookMessageCriteria(path: downlinkAckPath);
-            this.DownlinkNack = new WebhookMessageCriteria(path: downlinkNackPath);
-            this.DownlinkSent = new WebhookMessageCriteria(path: downlinkSentPath);
-            this.DownlinkFailed = new WebhookMessageCriteria(path: downlinkFailedPath);
-            this.DownlinkQueued = new WebhookMessageCriteria(path: downlinkQueuedPath);
-            this.DownlinkQueueInvalidated = new WebhookMessageCriteria(path: downlinkQueueInvalidatedPath);
-            this.LocationSolved = new WebhookMessageCriteria(path: locationSolvedPath);
-            this.ServiceData = new WebhookMessageCriteria(path: serviceDataPath);
+
+            if (!string.IsNullOrWhiteSpace(uplinkMessagePath))
+            {
+                this.UplinkMessage = new WebhookMessageCriteria(path: uplinkMessagePath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(joinAcceptPath))
+            {
+                this.JoinAccept = new WebhookMessageCriteria(path: joinAcceptPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkAckPath))
+            {
+                this.DownlinkAck = new WebhookMessageCriteria(path: downlinkAckPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkNackPath))
+            {
+                this.DownlinkNack = new WebhookMessageCriteria(path: downlinkNackPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkSentPath))
+            {
+                this.DownlinkSent = new WebhookMessageCriteria(path: downlinkSentPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkFailedPath))
+            {
+                this.DownlinkFailed = new WebhookMessageCriteria(path: downlinkFailedPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkQueuedPath))
+            {
+                this.DownlinkQueued = new WebhookMessageCriteria(path: downlinkQueuedPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(downlinkQueueInvalidatedPath))
+            {
+                this.DownlinkQueueInvalidated = new WebhookMessageCriteria(path: downlinkQueueInvalidatedPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(locationSolvedPath))
+            {
+                this.LocationSolved = new WebhookMessageCriteria(path: locationSolvedPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(serviceDataPath))
+            {
+                this.ServiceData = new WebhookMessageCriteria(path: serviceDataPath);
+            }
         }
 
         #endregion Constructor
